@@ -1,0 +1,33 @@
+{
+  "name": "@easycube/inject-static-resources-plugin",
+  "version": "0.1.0",
+  "author": "Shanglin-Lei <https://github.com/Shanglin-Lei>",
+  "description": "一个 EasyCube 专用的 vite 插件，用于在打包时将静态资源注入 index.html",
+  "homepage": "https://github.com/zdww-easycube/inject-static-resources-plugin#readme",
+  "keywords": [],
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "main": "./dist/inject-static-resources-plugin.cjs",
+  "module": "./dist/inject-static-resources-plugin.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/inject-static-resources-plugin.cjs",
+      "import": "./dist/inject-static-resources-plugin.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "./dist"
+  ],
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.6.0"
+  }
+}
