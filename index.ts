@@ -2,33 +2,33 @@ import type { Plugin } from 'vite'
 
 export default function injectStaticResources(isBuild: boolean): Plugin {
   const resources = `
-      <link as="style" rel="/static/easycube-playground@0.1.4.min.css" href="styles.css">
-      <link as="script" rel="/static/dayjs@1.11.10.min.js" defer>
-      <link as="script" rel="/static/dayjs@1.11.10-plugin-advancedFormat.js" defer>
-      <link as="script" rel="/static/dayjs@1.11.10-plugin-customParseFormat.js" defer>
-      <link as="script" rel="/static/dayjs@1.11.10-plugin-localeData.js" defer>
-      <link as="script" rel="/static/dayjs@1.11.10-plugin-quarterOfYear.js" defer>
-      <link as="script" rel="/static/dayjs@1.11.10-plugin-weekday.js" defer>
-      <link as="script" rel="/static/dayjs@1.11.10-plugin-weekOfYear.js" defer>
-      <link as="script" rel="/static/dayjs@1.11.10-plugin-weekYear.js" defer>
-      <link as="script" rel="/static/dayjs@1.11.10-locale-zh-cn.js" defer>
-      <link as="script" rel="/static/lodash@4.17.21.min.js" defer>
-      <link as="script" rel="/static/echarts@5.4.3.min.js" defer>
-      <link as="script" rel="/static/axios@0.27.2.min.js" defer>
-      <link as="script" rel="/static/easycube-request@0.1.1.iife.min.js" defer>
-      <link as="script" rel="/static/popper.js@2.11.8.min.js" defer>
-      <link as="script" rel="/static/tippy.js@6.3.7.umd.min.js" defer>
-      <link as="script" rel="/static/vue@3.3.4.runtime.global.prod.min.js" defer>
-      <link as="script" rel="/static/ant-design-vue@3.2.20-with-locales.min.js" defer>
-      <link as="script" rel="/static/request@0.1.0.iife.min.js" defer>
-      <link as="script" rel="/static/vue-demi@0.14.6.iife.min.js" defer>
-      <link as="script" rel="/static/vueuse_shared@10.4.1.iife.min.js" defer>
-      <link as="script" rel="/static/vueuse_core@10.4.1.iife.min.js" defer>
-      <link as="script" rel="/static/vue-router@4.1.5.global.min.js" defer>
-      <link as="script" rel="/static/pinia@2.1.6.iife.min.js" defer>
-      <link as="script" rel="/static/sortable@1.15.0.min.js" defer>
-      <link as="script" rel="/static/vuedraggable.umd.min.js" defer>
-      <link as="script" rel="/static/easycube-playground@0.1.4.iife.min.js" defer>
+      <link as="style" rel="/static/easycube-playground@0.1.4.min.css"/>
+      <link as="script" rel="/static/dayjs@1.11.10.min.js"/>
+      <link as="script" rel="/static/dayjs@1.11.10-plugin-advancedFormat.js"/>
+      <link as="script" rel="/static/dayjs@1.11.10-plugin-customParseFormat.js"/>
+      <link as="script" rel="/static/dayjs@1.11.10-plugin-localeData.js"/>
+      <link as="script" rel="/static/dayjs@1.11.10-plugin-quarterOfYear.js"/>
+      <link as="script" rel="/static/dayjs@1.11.10-plugin-weekday.js"/>
+      <link as="script" rel="/static/dayjs@1.11.10-plugin-weekOfYear.js"/>
+      <link as="script" rel="/static/dayjs@1.11.10-plugin-weekYear.js"/>
+      <link as="script" rel="/static/dayjs@1.11.10-locale-zh-cn.js"/>
+      <link as="script" rel="/static/lodash@4.17.21.min.js"/>
+      <link as="script" rel="/static/echarts@5.4.3.min.js"/>
+      <link as="script" rel="/static/axios@0.27.2.min.js"/>
+      <link as="script" rel="/static/easycube-request@0.1.1.iife.min.js"/>
+      <link as="script" rel="/static/popper.js@2.11.8.min.js"/>
+      <link as="script" rel="/static/tippy.js@6.3.7.umd.min.js"/>
+      <link as="script" rel="/static/vue@3.3.4.runtime.global.prod.min.js"/>
+      <link as="script" rel="/static/ant-design-vue@3.2.20-with-locales.min.js"/>
+      <link as="script" rel="/static/request@0.1.0.iife.min.js"/>
+      <link as="script" rel="/static/vue-demi@0.14.6.iife.min.js"/>
+      <link as="script" rel="/static/vueuse_shared@10.4.1.iife.min.js"/>
+      <link as="script" rel="/static/vueuse_core@10.4.1.iife.min.js"/>
+      <link as="script" rel="/static/vue-router@4.1.5.global.min.js"/>
+      <link as="script" rel="/static/pinia@2.1.6.iife.min.js"/>
+      <link as="script" rel="/static/sortable@1.15.0.min.js"/>
+      <link as="script" rel="/static/vuedraggable.umd.min.js"/>
+      <link as="script" rel="/static/easycube-playground@0.1.4.iife.min.js"/>
 
       <link rel="stylesheet" href="/static/easycube-playground@0.1.4.min.css" />
       <script src="/static/dayjs@1.11.10.min.js" defer></script>
@@ -63,7 +63,7 @@ export default function injectStaticResources(isBuild: boolean): Plugin {
     transformIndexHtml(html: string) {
       if (isBuild) {
         const newHTML = html.replace(/<head>([\s\S]*?)<\/head>/g, (_, headInnerText) => {
-          return `<head>\n${resources}${headInnerText}</head>`
+          return `<head>\n${resources}\n${headInnerText}</head>`
         })
         return newHTML
       } else {
