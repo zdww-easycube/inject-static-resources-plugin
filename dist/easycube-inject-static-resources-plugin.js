@@ -26,17 +26,17 @@ const t = [
   { name: "sortable@1.15.0.min.js", type: "script" },
   { name: "vuedraggable.umd.min.js", type: "script" },
   { name: "easycube-playground@0.1.4.iife.min.js", type: "script" }
-], n = t.map((e) => `<link as="${e.type}" ref="preload" href="/static/${e.name}">`).join(""), i = t.map((e) => e.type === "style" ? `<link rel="stylesheet" href="/static/${e.name}" />` : `<script src="/static/${e.name}" preload><\/script>`).join(""), r = `
-  ${n}
+], a = t.map((e) => `<link as="${e.type}" ref="preload" href="/static/${e.name}">`).join(""), i = t.map((e) => e.type === "style" ? `<link rel="stylesheet" href="/static/${e.name}" />` : `<script src="/static/${e.name}" defer><\/script>`).join(""), r = `
+  ${a}
   ${i}
 `;
 function y(e) {
   return {
     name: "inject-static-resources-plugin",
     transformIndexHtml(s) {
-      return e ? s.replace(/<head>([\s\S]*?)<\/head>/g, (m, a) => `<head>
+      return e ? s.replace(/<head>([\s\S]*?)<\/head>/g, (m, n) => `<head>
               ${r}
-              ${a}
+              ${n}
             </head>`) : s;
     }
   };
