@@ -39,7 +39,7 @@ const reloadResource = resources
     if (item.type === 'style') {
       return `<link rel="stylesheet" href="/static/${item.name}" />`
     } else {
-      return `<script src="/static/${item.name}" preload></script>`
+      return `<script src="/static/${item.name}" defer></script>`
     }
   })
   .join('')
