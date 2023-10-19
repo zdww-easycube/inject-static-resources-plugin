@@ -9,7 +9,7 @@ export default defineConfig((): UserConfig => {
     build: {
       lib: {
         formats: ['es', 'cjs'],
-        entry: resolve(__dirname, './index.ts'),
+        entry: './index.ts',
       },
     },
   }
