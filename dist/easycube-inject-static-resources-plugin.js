@@ -26,21 +26,25 @@ const t = [
   { name: "sortable@1.15.0.min.js", type: "script" },
   { name: "vuedraggable.umd.min.js", type: "script" },
   { name: "easycube-playground@0.1.4.iife.min.js", type: "script" }
-], a = t.map((e) => `<link as="${e.type}" ref="preload" href="/static/${e.name}">`).join(""), i = t.map((e) => e.type === "style" ? `<link rel="stylesheet" href="/static/${e.name}" />` : `<script src="/static/${e.name}" defer><\/script>`).join(""), r = `
-  ${a}
-  ${i}
-`;
-function y(e) {
+], m = {
+  prefix: "/static"
+};
+function o(n, i = m) {
+  const { prefix: s } = i, a = t.map((e) => `<link as="${e.type}" ref="preload" href="${s}/${e.name}">`).join(""), r = t.map((e) => e.type === "style" ? `<link rel="stylesheet" href="${s}/${e.name}" />` : `<script src="${s}/${e.name}" defer><\/script>`).join(""), p = `
+    ${a}
+    ${r}
+  `;
   return {
     name: "inject-static-resources-plugin",
-    transformIndexHtml(s) {
-      return e ? s.replace(/<head>([\s\S]*?)<\/head>/g, (m, n) => `<head>
-              ${r}
-              ${n}
-            </head>`) : s;
+    transformIndexHtml(e) {
+      return n ? e.replace(/<head>([\s\S]*?)<\/head>/g, (j, c) => `<head>
+              ${p}
+              ${c}
+            </head>`) : e;
     }
   };
 }
 export {
-  y as default
+  o as default,
+  m as defaultOptions
 };

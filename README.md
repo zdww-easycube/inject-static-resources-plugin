@@ -23,3 +23,7 @@ export default defineConfig(({ command }: ConfigEnv): UserConfig => {
   }
 })
 ```
+
+## 更新记录
+
+`0.1.10`: 增加配置项参数；

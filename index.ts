@@ -30,26 +30,37 @@ const resources = [
   { name: 'easycube-playground@0.1.4.iife.min.js', type: 'script' },
 ]
 
-const preloadResource = resources
-  .map(item => `<link as="${item.type}" ref="preload" href="/static/${item.name}">`)
-  .join('')
+export type Options = {
+  prefix: string
+}
 
-const reloadResource = resources
-  .map(item => {
-    if (item.type === 'style') {
-      return `<link rel="stylesheet" href="/static/${item.name}" />`
-    } else {
-      return `<script src="/static/${item.name}" defer></script>`
-    }
-  })
-  .join('')
+export const defaultOptions = {
+  prefix: '/static',
+}
 
-const rawResource = `
-  ${preloadResource}
-  ${reloadResource}
-`
+export default function injectStaticResources(
+  isBuild: boolean,
+  options: Options = defaultOptions,
+): Plugin {
+  const { prefix } = options
+  const preloadResource = resources
+    .map(item => `<link as="${item.type}" ref="preload" href="${prefix}/${item.name}">`)
+    .join('')
 
-export default function injectStaticResources(isBuild: boolean): Plugin {
+  const reloadResource = resources
+    .map(item => {
+      if (item.type === 'style') {
+        return `<link rel="stylesheet" href="${prefix}/${item.name}" />`
+      } else {
+        return `<script src="${prefix}/${item.name}" defer></script>`
+      }
+    })
+    .join('')
+
+  const rawResource = `
+    ${preloadResource}
+    ${reloadResource}
+  `
   const plugin: Plugin = {
     name: 'inject-static-resources-plugin',
     transformIndexHtml(html: string) {
